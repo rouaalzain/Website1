@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+		<head>
+				<link rel="stylesheet" href="MyStyle.css">
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+				<title>Cars</title>
+		</head>
+		<body  onload="generate()">
+
+				<div class="topnav">
+				  <a  href="Home.html">Home</a>
+				  <a href="aboutsus.html">Aboutsus</a>
+				  <a href="cars.html">Cars</a>
+				</div>
+				<div class="main-block">
+					<div>
+						<div class="car-popup" id="carInfos">
+					  	<div class="form-container">
+						  		<label>
+						  			<h2> Detailed information about the car:</h2>
+						  			<img id="popupPhoto"  src="" height="100px" align="left">
+						  			<p>	
+						  				1-automatic<br>
+						  				2-Four doors<br>
+						  				3-five seats<br>
+						  			
+						  			</p>
+						  			<h2>Table for calculating the final rental method:</h2>
+						  			<table>
+						  			<tr>
+								    <th>Daily Rent:</th>
+								    <th>1% reconstruction fee:</th>
+								    <th>5% tax:</th>
+								    </tr>
+								    <tr>
+								    	<th id="price">0</th>
+								    	<th id="TVA">0</th>
+								    	<th id="TVA2">0</th>
+								    
+								    </tr>
+								  </table>
+								  <button type="button" class="btn cancel" onclick="closePopup()">Close</button>
+
+								  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" onchange="checkBoxFollow(); " >
+					        <label for="vehicle1"> <b>Follow to the car request</b></label><br>
+						  		</label>
+
+					  		<div id="followInfos" style="display:none;">
+					  			 <label for="Fname">Full Name:</label>
+									  <input type="text" id="Fname" name="Fname" size="20" placeholder="مثال:محمد عمران" onchange="chkName()"required><br><br>
+									  <label for=""> National Number:</label>
+									  <input type="tel" id="Nnumber" name="Nnumber" pattern="[0-14]{2}-[0-9]{8}" placeholder="01010755004" 
+									  required><br><br>
+									  <label for="date">Date of birth:</label>
+									  <input type="date" id="date" name="date"min="1958-01-01" max="2004-1-1"
+									  onchange="chDate()" required><br><br>
+									  <label for="phone">Mobile Number:</label>
+									  <input type="tel" id="phone" name="phone" pattern="[+963]{3}-[0-9]{9}" placeholder="+963-991526545" required><br><br>
+									  <label for="email">Email:</label>
+									  <input type="email" id="email" name="email" placeholder="something@gmail.com"><br><br>
+									  <label for="Number">Number of days/weeks/months:</label>
+									  <input type="Number" id="Number" name="Number" min="1"><br><br>
+				            <!-- captcha-->
+									<div >
+									   <div  class="inline">
+									        <input type="text"id="submit" placeholder="Captcha code" />
+									    </div>
+									 
+									 <div class="inline" onclick="generate()">
+									      <i class="fas fa-sync"></i>
+									 </div>
+									 
+									 <div id="image"
+									         class="inline"selectable="False">
+									  </div>
+									    <input type="submit" id="btn" onclick="printmsg()" />
+									    <p id="key"></p>
+									  </div>
+
+					  	 <button type="button" class="btn cancel"  onclick="alert12();">Send Request</button>
+					  	</div>
+					  </div>
+			  	</div>
+							<table class="block1">
+								<tr>
+									<th colspan="5" class="block1-title" >2023</th>
+								</tr>
+							  <tr>
+							    <th>car photo</th>
+							    <th>Price</th>
+							    <th>type fo rent</th>
+							    <th>production date</th>
+							    <th>type of car</th>
+							  </tr>
+							  <tr>
+								    <td>
+								    	<img  src="imgs/0.png" id="0" height="100px" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value); " >
+								    </td>
+								    <td>
+								    	<p id="DailyRent[0]">159000</p><input type="hidden" id="custId[0]" value="159000">
+								    </td>
+								    <td>
+								    	<select name="0" id="rentType[0]" onchange="rentCul(this.name, this.value);">
+									    	<option value="daily">daily</option>
+									    	<option value="weekly">weekly</option>
+									    	<option value="monthly">monthly</option>
+								    	</select>
+								    </td>
+								    <td>2023
+								    </td>
+								    <td>kia k5
+								    </td>  
+							  </tr>
+						    <tr>
+								    <td>
+								    	<a><img src="imgs/1.png" height="100px" id="1" onclick="openPopup(); rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								    </td>
+								    <td><p id="DailyRent[1]">900000</p><input type="hidden" id="custId[1]" value="139000">
+								    </td>
+								    <td>
+								    	<select name="1" id="rentType[1]" onchange="rentCul(this.name, this.value)">
+								    			<option value="daily">daily</option>
+								    			<option value="weekly">weekly</option>
+								    			<option value="monthly">monthly</option>
+								    	 </select>
+								    </td>
+								    <td >2023
+								    </td>
+								    <td>  Lamborghini Urus
+							    	</td>  
+							  </tr>
+						    <tr>
+								    <td>
+								    <a><img src="imgs/2.png" height="100px" id="2" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								    </td>
+								    <td><p id="DailyRent[2]">850000</p><input type="hidden" id="custId[2]" value="850000">
+								    </td>
+								    <td>
+								    	<select name="2" id="rentType[2]" onchange="rentCul(this.name, this.value)">
+								    			<option value="daily">daily</option>
+								    			<option value="weekly">weekly</option>
+								    			<option value="monthly">monthly</option>
+								    		</select>
+								    </td>
+								    <td >2023
+								    </td>
+								    <td> porshche cayenne turbo 
+							    	</td>  
+							  </tr>
+				         <tr>
+								    <td>
+								    <a><img src="imgs/3.png" height="100px" id="3" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								    </td>
+								    <td><p id="DailyRent[3]">500000</p><input type="hidden" id="custId[3]" value="500000">
+								    </td>
+								    <td>
+								    	<select name="3" id="rentType[3]" onchange="rentCul(this.name, this.value)">
+								    			<option value="daily">daily</option>
+								    			<option value="weekly">weekly</option>
+								    			<option value="monthly">monthly</option>
+								    		</select>
+								    </td>
+								    <td>2023
+								    </td>
+								    <td> Nissan Patrol nismo
+								    </td>  
+							  </tr>
+						    <tr>
+								    <td>
+								       <a><img src="imgs/4.png" height="100px" id="4" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								     </td>
+								     <td>
+								     	<p id="DailyRent[4]">300000</p><input type="hidden" id="custId[4]" value="300000">
+								     </td>
+								     <td>
+								     	<select name="4" id="rentType[4]" onchange="rentCul(this.name, this.value)">
+								    			<option value="daily">daily</option>
+								    			<option value="weekly">weekly</option>
+								    			<option value="monthly">monthly</option>
+								    		</select>
+								    </td>
+								    <td >2023
+								    </td>
+								    <td> BMW M8
+								    </td>  
+							  </tr>
+						   <tr>
+									 <th colspan="5" class="block1-title" >2022</th>
+							 </tr>
+							  <tr>
+								    <th>car photo</th>
+								    <th>Price</th>
+								    <th>type fo rent</th>
+								    <th>production date</th>
+								    <th>type of car</th>
+							  </tr>
+							  <tr>
+								    <td>
+								    <a><img src="imgs/5.png" height="100px" id="5" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								    </td>
+								    <td><p id="DailyRent[5]">100000</p><input type="hidden" id="custId[5]" value="90000">
+								    </td>
+								    <td><select name="5" id="rentType[5]" onchange="rentCul(this.name, this.value)">
+								    			<option value="daily">daily</option>
+								    			<option value="weekly">weekly</option>
+								    			<option value="monthly">monthly</option>
+								    		</select>
+								    </td>
+								    <td >2022
+								    </td>
+								    <td>Suzuki jimny
+								    </td>  
+							  </tr>
+							  <tr>
+							    <td>
+								    <a><img src="imgs/6.png" height="100px" id="6" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+								    </td>
+								    <td><p id="DailyRent[6]">150000</p><input type="hidden" id="custId[6]" value="1500000">
+							    </td>
+							    <td>
+							    	<select name="6" id="rentType[6]" onchange="rentCul(this.name, this.value)">
+							    			<option value="daily">daily</option>
+							    			<option value="weekly">weekly</option>
+							    			<option value="monthly">monthly</option>
+							    		</select>
+							    </td>
+							    <td >2022
+							    </td>
+							    <td> Hyndai Elantra
+							    </td>  
+							   </tr>
+							   <tr>
+							    <td>
+							    	<a><img src="imgs/7.png" height="100px"  id="7" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+							    </td>
+							    <td> 
+							    	<p id="DailyRent[7]">200000</p><input type="hidden" id="custId[7]" value="300000">
+							    </td>
+							    <td>
+							    	<select name="7" id="rentType[7]" onchange="rentCul(this.name, this.value)">
+							    			<option value="daily">daily</option>
+							    			<option value="weekly">weekly</option>
+							    			<option value="monthly">monthly</option>
+							    	</select>
+							    </td>
+							    <td >2022
+							    </td>
+							    <td> Toyota Corolla
+							    </td>  
+							   </tr>
+							    <tr>
+							    <td>
+							    	<a><img src="imgs/8.png" height="100px" id="8" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+							    </td>
+							    <td><p id="DailyRent[8]">800000</p><input type="hidden" id="custId[8]" value="800000">
+							    </td>
+							    <td><select name="8" id="rentType[8]" onchange="rentCul(this.name, this.value)">
+							    			<option value="daily">daily</option>
+							    			<option value="weekly">weekly</option>
+							    			<option value="monthly">monthly</option>
+							    		</select>
+							    </td>
+							    <td >2022
+							    </td>
+							    <td> Mercedes S450
+							    </td>  
+							  </tr>
+							  <tr>
+							    <td>
+							    	<a><img src="imgs/9.png" height="100px" id="9" onclick="openPopup();rentCul(this.id, document.getElementById('rentType['+this.id+']').value);"></a>
+							    </td>
+							    <td> 
+							    	<p id="DailyRent[9]">500000</p><input type="hidden" id="custId[9]" value="400000">
+							    </td>
+							    <td> 
+							    	<select name="9" id="rentType[9]" onchange="rentCul(this.name, this.value)">
+							    			<option value="daily">daily</option>
+							    			<option value="weekly">weekly</option>
+							    			<option value="monthly">monthly</option>
+							    	</select>
+							    </td>
+							    <td >2022
+							    </td>
+							    <td> Ford Mustang
+							    </td>  
+							  </tr>
+						  
+						</table>
+
+				  </div>
+				</div>
+		</body>
+</html>
+ 
+
+
+<script src="myFunctions.js"></script>
